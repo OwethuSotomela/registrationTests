@@ -1,128 +1,133 @@
-describe('Greeting', function() {
-    it('Should greet the name entered in isiZulu', function() {
-        let myHello = Greeting([])
-        var string = "Owethu"
-        var langauge = "Sawubona, "
+describe('regPlate', function () {
+    it('Should return the message "Not a supported format type"', function () {
+        let myPlate = Registration([])
+        var carReg = "L 154-896"
 
-        myHello.setName(string)
+        myPlate.setRegi(carReg)
 
-        assert.equal('Sawubona, Owethu', myHello.firstL(string, langauge))
+        assert.equal('Format doesn\'t match the required!', myPlate.getMessage(carReg))
     })
-    it('Should return message "Name already greeted"', function() {
-        let myHello = Greeting([])
-        var string = "Owethu"
-        var langauge = "Sawubona, "
+    it('Should return the message "Not a supported format type"', function () {
+        let myPlate = Registration([])
+        var carReg = "EC 154-89"
 
-        myHello.setName(string)
-        myHello.setName(string)
+        myPlate.setRegi(carReg)
 
-        assert.equal('Sawubona, Owethu', myHello.firstL(string, langauge))
-        assert.equal('Name already greeted!', myHello.getMessage())
+        assert.equal('Format doesn\'t match the required!', myPlate.getMessage(carReg))
     })
-    it('Should return the first character of the name entered in uppercase and the rest in lowercase', function() {
-        let myHello = Greeting([])
-        var string = "Ohworthy"
-        var langauge = "Sawubona, "
 
-        myHello.setName(string)
+})
+describe('setRegi', function () {
+    it('Should return the list of registration numbers entered', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 123-456"
+        var carReg1 = "CX 456-258"
+        var carReg2 = "CY 587 756"
+        var carReg3 = "CW 456-875"
+        var carReg4 = "CA 965-256"
+        var carReg5 = "CY 789-586"
+        var carReg6 = "CX 987-256"
 
-        assert.equal('Sawubona, Ohworthy', myHello.firstL(string, langauge))
-        
+        myPlate.setRegi(carReg)
+        myPlate.setRegi(carReg1)
+        myPlate.setRegi(carReg2)
+        myPlate.setRegi(carReg3)
+        myPlate.setRegi(carReg4)
+        myPlate.setRegi(carReg5)
+        myPlate.setRegi(carReg6)
+
+        assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6], myPlate.getRegi())
     })
-    it('Should return the greeting in English', function() {
-        let myHello = Greeting([])
-        var string = "Worthy"
-        var langauge = "Hi, "
+    it('Should return the list of registration numbers entered', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 123-456"
+        var carReg1 = "CX 456-258"
+        var carReg2 = "CY 587 756"
+        var carReg3 = "CW 456-875"
+        var carReg4 = "CA 965-256"
+        var carReg5 = "CY 789-586"
+        var carReg6 = "CX 987-256"
+        var carReg7 = "CW 965-255"
+        var carReg8 = "CY 789-546"
+        var carReg9 = "CY 987-656"
 
-        myHello.setName(string)
-        myHello.setName(string)
+        myPlate.setRegi(carReg)
+        myPlate.setRegi(carReg1)
+        myPlate.setRegi(carReg2)
+        myPlate.setRegi(carReg3)
+        myPlate.setRegi(carReg4)
+        myPlate.setRegi(carReg5)
+        myPlate.setRegi(carReg6)
+        myPlate.setRegi(carReg7)
+        myPlate.setRegi(carReg8)
+        myPlate.setRegi(carReg9)
 
-        assert.equal('Hi, Worthy', myHello.firstL(string, langauge))
-    })   
-    it('Should return the string of names entered', function() {
-        let myHello = Greeting([])
-        var string = "Worthy"
-        var string1 = "Sthera"
-        var string2 = "Asonwabe"
-        var string3 = "Kuli"
-        var string4 = "Avile"
-        var string5 = "Naphi"
-        var string6 = "Mihlali"
-        var string7 = "Anecebo"
-        var string8 = "Amanda"
+        assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6, carReg7, carReg8, carReg9], myPlate.getRegi())
+    })
+    it('Should return the first two characters of a registration number in UPPERCASE', function () {
+        let myPlate = Registration([])
+        var carReg = "cy 254635"
+        var carReg = "cy 254635"
 
-        myHello.setName(string)
-        myHello.setName(string1)
-        myHello.setName(string2)
-        myHello.setName(string3)
-        myHello.setName(string4)
-        myHello.setName(string5)
-        myHello.setName(string6)
-        myHello.setName(string7)
-        myHello.setName(string8)
+        myPlate.setRegi(carReg)
 
-        assert.deepEqual([string,string1,string2,string3,string4,string5,string6,string7,string8], myHello.getNames())
-    })     
-    it('Should return the number of  times the names are entered', function() {
-        let myHello = Greeting([])
-        var string = "Worthy"
-        var string1 = "Sthera"
-        var string2 = "Asonwabe"
-        var string3 = "Kuli"
-        var string4 = "Avile"
-        var string5 = "Naphi"
-        var string6 = "Mihlali"
-        var string7 = "Anecebo"
-        var string8 = "Amanda"
-        var string9 = "Sandy"
-        var string10 = "Asanda"
+        assert.equal('CY 254635', myPlate.getRegi(carReg))
+    })
+    it('Should return the first two characters of a registration number in UPPERCASE', function () {
+        let myPlate = Registration([])
+        var carReg = "cx 539-874"
+        var carReg = "cx 539-874"
 
-        myHello.setName(string)
-        myHello.setName(string1)
-        myHello.setName(string2)
-        myHello.setName(string3)
-        myHello.setName(string4)
-        myHello.setName(string5)
-        myHello.setName(string6)
-        myHello.setName(string7)
-        myHello.setName(string8)
-        myHello.setName(string9)
-        myHello.setName(string10)
+        myPlate.setRegi(carReg)
 
-        assert.deepEqual(11, myHello.greetCounter())
-    })  
-    
-    it('Should return the first character of the name greeted in isiZulu in UPPERCASE and the rest in lowercase ', function() {
-        let myHello = Greeting([])
-        var string = "worthy"
+        assert.equal('CX 539-874', myPlate.getRegi(carReg))
+    })
+})
+describe('regCounter', function () {
+    it('Should return the number of times car registration numbers are entered', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 123-456"
+        var carReg1 = "CX 456-258"
+        var carReg2 = "CY 587 756"
+        var carReg3 = "CW 456-875"
+        var carReg4 = "CA 965-256"
+        var carReg5 = "CY 789-586"
+        var carReg6 = "CX 987-256"
+        var carReg7 = "CW 965-255"
+        var carReg8 = "CY 789-546"
+        var carReg9 = "CY 987-656"
 
+        myPlate.setRegi(carReg)
+        myPlate.setRegi(carReg1)
+        myPlate.setRegi(carReg2)
+        myPlate.setRegi(carReg3)
+        myPlate.setRegi(carReg4)
+        myPlate.setRegi(carReg5)
+        myPlate.setRegi(carReg6)
+        myPlate.setRegi(carReg7)
+        myPlate.setRegi(carReg8)
+        myPlate.setRegi(carReg9)
 
-        myHello.setName(string)
-        myHello.greetMessage("isiZulu", "LUSANDA")
+        assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6, carReg7, carReg8, carReg9], myPlate.getRegi())
+    })
+    it('Should return the number of times car registration numbers are entered', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 123-456"
+        var carReg1 = "CX 456-258"
+        var carReg2 = "CY 587 756"
+        var carReg3 = "CW 456-875"
+        var carReg4 = "CA 965-256"
+        var carReg5 = "CY 789-586"
+        var carReg6 = "CX 987-256"
 
-        assert.deepEqual("Sawubona, Lusanda", myHello.getGreet())
-    })   
+        myPlate.setRegi(carReg)
+        myPlate.setRegi(carReg1)
+        myPlate.setRegi(carReg2)
+        myPlate.setRegi(carReg3)
+        myPlate.setRegi(carReg4)
+        myPlate.setRegi(carReg5)
+        myPlate.setRegi(carReg6)
 
-    it('Should return the first character of the name greeted in English in UPPERCASE and the rest in lowercase', function() {
-        let myHello = Greeting([])
-        var string = "worthy"
-
-
-        myHello.setName(string)
-        myHello.greetMessage("English", "OHwoRTHY")
-
-        assert.deepEqual("Hi, Ohworthy", myHello.getGreet())
-    })   
-
-    it('Should return the first character of the name greeted in Portuguese in UPPERCASE and the rest in lowercase', function() {
-        let myHello = Greeting([])
-        var string = "worthy"
-
-
-        myHello.setName(string)
-        myHello.greetMessage("Portuguese", "wORTHY")
-
-        assert.deepEqual("Oi, Worthy", myHello.getGreet())
-    })   
-         
+        assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6], myPlate.getRegi())
+    })
 })
