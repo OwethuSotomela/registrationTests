@@ -5,7 +5,7 @@ describe('regPlate', function () {
 
         myPlate.setRegi(carReg)
 
-        assert.equal('Format doesn\'t match the required!', myPlate.getMessage(carReg))
+        assert.equal("Format doesn't match the required!", myPlate.getMessage(carReg))
     })
     it('Should return the message "Not a supported format type"', function () {
         let myPlate = Registration([])
@@ -13,9 +13,25 @@ describe('regPlate', function () {
 
         myPlate.setRegi(carReg)
 
-        assert.equal('Format doesn\'t match the required!', myPlate.getMessage(carReg))
+        assert.equal("Format doesn't match the required!", myPlate.getMessage(carReg))
     })
+    it('Should return the message "Car registration successfully added"', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 154-859"
 
+        myPlate.setRegi(carReg)
+
+        assert.equal("Car registration added successfully!", myPlate.getMessage(carReg))
+    })
+    it('Should return the message "Car registration number already added"', function () {
+        let myPlate = Registration([])
+        var carReg = "CA 154-859"
+
+        myPlate.setRegi(carReg)
+        myPlate.setRegi(carReg)
+
+        assert.equal("Car registration number already entered!", myPlate.getMessage(carReg))
+    })
 })
 describe('setRegi', function () {
     it('Should return the list of registration numbers entered', function () {
@@ -37,6 +53,7 @@ describe('setRegi', function () {
         myPlate.setRegi(carReg6)
 
         assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6], myPlate.getRegi())
+        assert.deepEqual(7, myPlate.getRegi().length)
     })
     it('Should return the list of registration numbers entered', function () {
         let myPlate = Registration([])
@@ -63,6 +80,7 @@ describe('setRegi', function () {
         myPlate.setRegi(carReg9)
 
         assert.deepEqual([carReg, carReg1, carReg2, carReg3, carReg4, carReg5, carReg6, carReg7, carReg8, carReg9], myPlate.getRegi())
+        assert.deepEqual(10, myPlate.getRegi().length)
     })
     it('Should return the first two characters of a registration number in UPPERCASE', function () {
         let myPlate = Registration([])
